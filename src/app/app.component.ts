@@ -121,11 +121,11 @@ export class AppComponent implements OnInit {
 let textMesh:any
     const loader = new FontLoader();
 
-    loader.load('../assets/Inter_Regular.json', function (font) {
+    loader.load('/assets/Inter_Regular.json', function (font) {
 
       const tGeometry = new TextGeometry('Hello three.js!', {
         font: font,
-		size: 0.8,
+		size: 0.5,
 		height: 0.1,
 		curveSegments: 1,
 		// bevelEnabled: true,
@@ -142,7 +142,7 @@ let textMesh:any
 
 
       ])
-      textMesh.position.set(3,0,0)
+      textMesh.position.set(2,0,0)
       scene.add(textMesh)
       console.log("text ok")
 
