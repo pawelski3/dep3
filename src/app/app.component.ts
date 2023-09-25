@@ -5,6 +5,10 @@ import * as THREE from 'three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 // import { ServiceCurrService } from '../service-curr.service';
+
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+
 import { Observable } from 'rxjs';
 
 
@@ -114,6 +118,38 @@ export class AppComponent implements OnInit {
     }
 
 //     renderer.render(scene, camera);
+let textMesh:any
+    const loader = new FontLoader();
+
+    loader.load('../assets/Inter_Regular.json', function (font) {
+
+      const tGeometry = new TextGeometry('Hello three.js!', {
+        font: font,
+		size: 0.8,
+		height: 0.1,
+		curveSegments: 1,
+		// bevelEnabled: true,
+		// bevelThickness: 1,
+		// bevelSize: 8,
+		// bevelOffset: 0,
+		// bevelSegments: 1
+      });
+
+      textMesh = new THREE.Mesh(tGeometry, [
+        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        new THREE.MeshPhongMaterial({ emissive: 0xf93434, emissiveIntensity: Math.random()-0.6 }),
+        new THREE.MeshPhongMaterial({ color: 0x345634 })
+
+
+      ])
+      textMesh.position.set(3,0,0)
+      scene.add(textMesh)
+      console.log("text ok")
+
+
+    });
+
+
 
 function animate() {
   requestAnimationFrame( animate );
